@@ -1,4 +1,4 @@
-﻿var EMAIL = {
+﻿var MENU = {
     runtime: {
         file: '',
         sendEmailLink: ''
@@ -6,11 +6,11 @@
     init: function () {
 
         $("#submit").off().on('click', function () {
-            if (EMAIL.runtime.file == '') {
+            if (MENU.runtime.file == '') {
                 $("#fileError").text("Please select a file");
                 return false;
             }
-            EMAIL.ajax.upload();
+            MENU.ajax.upload();
         });
 
         $("#fileSelect").on('change', function (e) {
@@ -22,13 +22,13 @@
 
             if (files.length == 0) {
                 $("#fileInfo").text("No File Chosen");
-                EMAIL.runtime.file = '';
+                MENU.runtime.file = '';
                 return;
             }
 
             // process all File objects
             for (var i = 0, f; f = files[i]; i++) {
-                EMAIL.files.validate(f);
+                MENU.files.validate(f);
                 var fileName = f.name;
                 if (fileName.length > 20) {
                     fileName = fileName.substring(0, 20) + "...";
@@ -55,7 +55,7 @@
                     return false;
                 }
 
-                EMAIL.runtime.file = file;
+                MENU.runtime.file = file;
             };
 
             reader.readAsDataURL(file);
@@ -91,9 +91,9 @@
     },
     ajax: {
         upload: function () {
-            EMAIL.html.setUploading(true);
+            MENU.html.setUploading(true);
             var formData = new FormData();
-            formData.append("FileUpload", EMAIL.runtime.file);
+            formData.append("FileUpload", MENU.runtime.file);
             $("#fileError").text("");
             $.ajax({
                 url: "/Menu/upload",
@@ -104,15 +104,15 @@
                 processData: false,
                 success: function (response) {
                     if (response && response.status) {
-                        EMAIL.html.setUploaded();
-                        EMAIL.html.renderResponse(response);
+                        MENU.html.setUploaded();
+                        MENU.html.renderResponse(response);
                     } else {
-                        EMAIL.html.setFailed();
+                        MENU.html.setFailed();
                         $("#fileError").text(response.error);
                     }
                 },
                 error: function (err) {
-                    EMAIL.html.setFailed();
+                    MENU.html.setFailed();
                     $("#fileError").text("Error Uploading File");
                 }
             });
