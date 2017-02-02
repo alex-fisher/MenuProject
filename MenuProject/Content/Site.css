@@ -1,0 +1,61 @@
+﻿
+html, body {
+    background: #dbdbdb;
+}
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.content-panel {
+    background: white;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    min-height: 150px;
+    text-align: center;
+    -webkit-box-shadow: 3px 6px 22px -9px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 6px 22px -9px rgba(0,0,0,0.75);
+    box-shadow: 3px 6px 22px -9px rgba(0,0,0,0.75);
+}
+
+.label {
+    padding: 10px;
+    color: #3e3c3c;
+    background: #efefef;
+    display: inline-block;
+    width: 70%;
+    font-size: 100%;
+}
+
+.error {
+    color: red;
+}
+
+#uploading {
+    margin-left: 20px;
+    font-size: 20px;
+    position: relative;
+    top: 3px;
+}
+}
